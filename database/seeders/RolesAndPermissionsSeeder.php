@@ -15,29 +15,16 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
-      $adminRole = Role::create(['name' => 'Admin']);
-      $musteriRole = Role::create(['name' => 'Müşteri']);
+       Role::create(['name' => 'Admin']);
+       Role::create(['name' => 'Customer']);
 
       // İzinlerin tanımlanması
-      $uploadEvrakPermission = Permission::create(['name' => 'evrak yükleme']);
-      $viewAllEvrakPermission = Permission::create(['name' => 'tüm evrakları görüntüleme']);
+      /*$uploadEvrakPermission = Permission::create(['name' => 'evrak_yükleme']);
+      $viewAllEvrakPermission = Permission::create(['name' => 'tüm_evrakları_görüntüleme']);
 
-      // Admin rolüne tüm evrakları görüntüleme iznini verelim
       $adminRole->givePermissionTo($viewAllEvrakPermission);
 
-      // Müşteri rolüne evrak yükleme iznini verelim
-      $musteriRole->givePermissionTo($uploadEvrakPermission);
+      $musteriRole->givePermissionTo($uploadEvrakPermission);*/
 
-      // Tüm müşterilere özel izinleri eklemek için buraya ekleyebilirsin.
-
-      // Evraklar tablosuna role_id'leri ekleyelim
-      $evraklar = Evraklar::all();
-      foreach ($evraklar as $evrak) {
-        if ($evrak->user->isAdmin()) {
-          $evrak->assignRole('Admin');
-        } else {
-          $evrak->assignRole('Müşteri');
-        }
-      }
     }
 }
