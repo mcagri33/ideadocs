@@ -1,9 +1,9 @@
 <?php
   // Variables
   return [
-    "creatorName" => "Pixinvent",
+    "creatorName" => "İdeaDocs",
     "creatorUrl" => "https://pixinvent.com",
-    "templateName" => "Vuexy",
+    "templateName" => "İdeaDocs",
     "templateSuffix" => "Bootstrap Admin Template",
     "templateVersion" => "1.0.0",
     "templateFree" => false,
