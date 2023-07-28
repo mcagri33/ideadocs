@@ -1,37 +1,136 @@
 {
   "menu": [
     {
-      "url": "/",
-      "name": "Home",
+      "url": "/panel",
+      "name": "Yönetim Kurulu İmzaları",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "pages-home"
+      "slug": "yonetim-kurulu-imzaları"
     },
     {
-      "url": "/page-2",
-      "icon": "menu-icon tf-icons ti ti-file",
-      "name": "Page 2",
-      "slug": "pages-page-2"
+      "url": "/panel",
+      "name": "2022 Tüm Yıl Muavinleri",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "tum-yil-muavinleri"
     },
     {
-      "url": "/pages/misc-error",
-      "name": "Error",
-      "icon": "menu-icon tf-icons ti ti-alert-triangle",
-      "slug": "pages-misc-error",
-      "target": "_blank"
+      "url": "/panel",
+      "name": "Alınan / Verilen Çekler Listesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "alinan-verilen-cekler"
     },
     {
-      "url": "/auth/login-basic",
-      "name": "Login",
-      "icon": "menu-icon tf-icons ti ti-login",
-      "slug": "auth-login-basic",
-      "target": "_blank"
+      "url": "/panel",
+      "name": "Alınan / Verilen Teminat Mektupları Listesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "alinan-verilen-teminat"
     },
     {
-      "url": "/auth/register-basic",
-      "name": "Register",
-      "icon": "menu-icon tf-icons ti ti-user",
-      "slug": "auth-register-basic",
-      "target": "_blank"
+      "url": "/panel",
+      "name": "Aktifler Üzerindeki Sigorta Teminat Tutarları",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "aktif-uzerindeki-sigorta-teminat"
+    },
+    {
+      "url": "/panel",
+      "name": "Kira Sözleşmeleri",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "kira-sozlesmeleri"
+    },
+    {
+      "url": "/panel",
+      "name": "Kasa Sayım Tutanağı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "kasa-sayim-tutanagi"
+    },
+    {
+      "url": "/panel",
+      "name": "Banka Mutabakatları",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "banka-mutabakat"
+    },
+    {
+      "url": "/panel",
+      "name": "Stok Sayım Tutanağı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "stok-sayim-tutanagi"
+    },
+    {
+      "url": "/panel",
+      "name": "Stok Miktar Dengesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "stok-miktar-dengesi"
+    },
+    {
+      "url": "/panel",
+      "name": "Stok Tutar Dengesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "stok-tutar-dengesi"
+    },
+    {
+      "url": "/panel",
+      "name": "Şüpheli Alacaklar İcra Evrakları (VUK Uyarınca Gider Yazılanlar)",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "supheli-alacaklar-icra-evraklari"
+    },
+    {
+      "url": "/panel",
+      "name": "Taksitli Kredi Listeleri (Ödeme Planları)",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "taksitli-kredi-listesi"
+    },
+    {
+      "url": "/panel",
+      "name": "Satış Faturaları Listesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "satis-fatura-listesi"
+    },
+    {
+      "url": "/panel",
+      "name": "Satışların Maliyeti Çalışması",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "satislarin-maliyet-calismasi"
+    },
+    {
+      "url": "/panel",
+      "name": "MDV / Amortisman Çalışması",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "amortisman-calismasi"
+    },
+    {
+      "url": "/panel",
+      "name": "Personel Listesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "personel-listesi"
+    },
+    {
+      "url": "/panel",
+      "name": "İnteraktiften Alınan Araç Listesi",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "interaktif-alinan-arac-listesi"
+    },
+    {
+      "url": "/panel",
+      "name": "Döviz Değerleme Tabloları",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "doviz-degerleme-tablolari"
+    },
+    {
+      "url": "/panel",
+      "name": "Organizasyon Şeması",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "organizasyon-semasi"
+    },
+    {
+      "url": "/panel",
+      "name": "Cari Yıl Güncel Mizanı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "cari-yil-guncel-mizani"
+    },
+    {
+      "url": "/panel",
+      "name": "MDV Değerleme Çalışmaları",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "mdv-degerleme-calismalari"
     }
   ]
 }
