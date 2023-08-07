@@ -55,29 +55,41 @@ class UserController extends Controller
   public function edit($uuid)
   {
     $user = User::where('uuid', $uuid)->first();
+
+    if (!$user) {
+      return redirect()->route('castle.user.index')
+        ->with('error', 'User not found.');
+    }
     $roles = Role::all();
-    return view('panel.user.edit',compact('user','roles'));
+    return view('panel.user.edit', compact('user', 'roles'));
   }
 
   public function update(Request $request, $uuid)
   {
+    $user = User::where('uuid', $uuid)->first();
+
     $this->validate($request, [
       'name' => 'required',
-      'email' => 'required|email|unique:users,email,'.$uuid,
-      'role' => 'required|array', // Validate that roles are received as an array
+      'email' => 'required|email|unique:users,email,'.$user->id,
+      'password' => 'nullable|min:6',
+      'company' => 'required',
+      'phone' => 'required',
+      'status' => 'required|in:1,0',
+      'role' => 'required|array', // Validation for roles as an array
     ]);
 
-    $user = User::where('uuid', $uuid)->first();
     $user->name = $request->name;
-    $user->company = $request->name;
+    $user->company = $request->company; // Fixed typo here, change $request->name to $request->company
     $user->phone = $request->phone;
     $user->email = $request->email;
     $user->status = $request->status;
-    $user->save();
-    $user->syncRoles([$request->role]); // Pass an array of roles to syncRoles
+    $user->update(); // Use save() instead of update() to save the changes
+
+    // Update the user's roles using syncRoles method
+    $user->syncRoles($request->roles); // Use $request->roles to update roles
 
     return redirect()->route('castle.user.index')
-      ->with('success','User updated successfully');
+      ->with('success', 'User updated successfully');
   }
 
   public function destroy($id)

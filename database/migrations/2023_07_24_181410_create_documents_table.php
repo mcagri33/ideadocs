@@ -24,7 +24,7 @@ return new class extends Migration {
       $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
       $table->softDeletes();
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+      $table->boolean('status')->default(2);
     });
   }
 

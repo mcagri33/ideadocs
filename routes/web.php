@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\panel\RoleController;
 use App\Http\Controllers\panel\UserController;
+use App\Http\Controllers\panel\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,7 @@ Route::group(['prefix' => '/panel', 'middleware' => ['auth']], function () {
     ->name('castle.panel.index');
 });
 
-Route::group(['prefix' => '/panel/user',['auth','role:Admin']], function () {
+Route::group(['prefix' => '/panel/user','middleware' => ['auth','role:Admin']], function () {
   Route::get('/', [UserController::class, 'index'])
     ->name('castle.user.index');
   Route::get('/add',[UserController::class,'create'])
@@ -34,19 +35,9 @@ Route::group(['prefix' => '/panel/user',['auth','role:Admin']], function () {
     ->name('castle.user.update');
   Route::get('/delete/{uuid}', [UserController::class, 'destroy'])
     ->name('castle.user.delete');
-  Route::post('/{user}/roles', [UserController::class, 'assignRole'])
-    ->name('castle.users.roles');
-  Route::delete('/{user}/roles/{role}', [UserController::class, 'removeRole'])
-    ->name('castle.users.roles.remove');
-  Route::post('/{user}/permissions', [UserController::class, 'givePermission'])
-    ->name('castle.users.permissions');
-  Route::delete('/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])
-    ->name('castle.users.permissions.revoke');
-  Route::get('/user/search', [UserController::class, 'search'])->name('castle.user.search');
-
 });
 
-Route::group(['prefix' => '/panel/roles',['auth','role:Admin']], function () {
+Route::group(['prefix' => '/panel/roles','middleware' => ['auth','role:Admin']], function () {
   Route::get('/', [RoleController::class, 'index'])
     ->name('castle.role.index');
   Route::get('/add',[RoleController::class,'create'])
@@ -61,3 +52,11 @@ Route::group(['prefix' => '/panel/roles',['auth','role:Admin']], function () {
     ->name('castle.role.delete');
 });
 
+Route::group(['prefix' => '/panel/yonetimkuruluimzalari','middleware' => ['auth','role:Admin']], function () {
+  Route::get('/', [DocumentController::class, 'yonetimkuruluevraklari'])
+    ->name('castle.yonetimkuruluimzalari.index');
+  Route::post('/store',[DocumentController::class,'yonetimkuruluevraklaristore'])
+    ->name('castle.yonetimkuruluimzalari.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.yonetimkuruluimzalari.download');
+
+});

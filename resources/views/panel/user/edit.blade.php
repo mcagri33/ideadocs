@@ -20,9 +20,6 @@
               <label for="html5-email-input" class="col-md-2 col-form-label">Email</label>
               <div class="col-md-10">
                 <input class="form-control" type="email" name="email" value="{{$user->email}}" id="html5-email-input" />
-                @error("email")
-                <span class="text-danger">{{$message}}</span>
-                @enderror
               </div>
             </div>
 
@@ -30,9 +27,6 @@
               <label for="html5-name-input" class="col-md-2 col-form-label">Ad Soyad</label>
               <div class="col-md-10">
                 <input type="text" class="form-control"  name="name" value="{{$user->name}}" placeholder="John Doe" />
-                @error("name")
-                <span class="text-danger">{{$message}}</span>
-                @enderror
               </div>
             </div>
 
@@ -40,9 +34,6 @@
               <label for="html5-name-input" class="col-md-2 col-form-label">Şirket Adı</label>
               <div class="col-md-10">
                 <input type="text" class="form-control" value="{{$user->company}}" name="company"/>
-                @error("company")
-                <span class="text-danger">{{$message}}</span>
-                @enderror
               </div>
             </div>
 
@@ -50,9 +41,6 @@
               <label for="html5-name-input" class="col-md-2 col-form-label">Telefon</label>
               <div class="col-md-10">
                 <input type="text" class="form-control" value="{{$user->phone}}" name="phone"/>
-                @error("company")
-                <span class="text-danger">{{$message}}</span>
-                @enderror
               </div>
             </div>
 
@@ -64,9 +52,6 @@
                   <option value="1" {{$user->status == 1 ? "selected" : ""}}>Aktif</option>
                   <option value="0" {{$user->status == 0 ? "selected" : ""}}>Pasif</option>
                 </select>
-                @error("status")
-                <span class="text-danger">{{$message}}</span>
-                @enderror
               </div>
             </div>
 
