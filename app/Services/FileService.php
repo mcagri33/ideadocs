@@ -11,7 +11,8 @@ class FileService
 {
   public static function uploadDocument(UploadedFile $file, $documentName, $documentType, $user)
   {
-    $filePath = $file->store('public/documents');
+    $userName = Str::slug($user->name);
+    $filePath = $file->store('public/documents/'.$userName);
     $document = new Documents([
       'user_id' => $user->id,
       'uuid' => Str::uuid(),

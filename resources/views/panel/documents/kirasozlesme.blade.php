@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'Yönetim Kurulu İmzaları')
+@section('title', 'Kira Sözleşmeleri')
 
 
 @section('vendor-style')
@@ -27,8 +27,8 @@
         @yield('title')
       </h5>
       <div class="card-body">
-        <form action="{{route('castle.yonetimkuruluimzalari.store')}}" enctype="multipart/form-data" method="post">
-         @csrf
+        <form action="{{route('castle.kirasozlesme.store')}}" enctype="multipart/form-data" method="post">
+          @csrf
           <div class="fallback">
             <input name="file" type="file" />
           </div>
@@ -78,30 +78,30 @@
         </thead>
         <tbody class="table-border-bottom-0">
         <?php $count = 1; ?>
-        @foreach($yonetimKuruluEvraklari as $yke)
+        @foreach($kiraSozlesme as $ks)
           <tr>
-            <td>{{ $yonetimKuruluEvraklari->perPage() * ($yonetimKuruluEvraklari->currentPage() - 1) + $count }}</td>
+            <td>{{ $kiraSozlesme->perPage() * ($kiraSozlesme->currentPage() - 1) + $count }}</td>
             <?php $count++; ?>
-            <td>{{ $yke->document_name }}</td>
-            <td>{{ $yke->document_type }}</td>
-            <td>{{ $yke->created_at }}</td>
+            <td>{{ $ks->document_name }}</td>
+            <td>{{ $ks->document_type }}</td>
+            <td>{{ $ks->created_at }}</td>
             <td>
-              @if($yke->status == 2)
+              @if($ks->status == 2)
                 <span class="badge bg-label-warning me-1">Onay Bekliyor</span>
-              @elseif($yke->status == 1)
+              @elseif($ks->status == 1)
                 <span class="badge bg-label-primary me-1">Onaylandı</span>
               @else
                 <span class="badge bg-label-danger me-1">Red Edildi</span>
               @endif
             </td>
-            <td><a href="{{ route('castle.yonetimkuruluimzalari.download', ['file' => $yke->id]) }}">Dosyayı İndir</a>
+            <td><a href="{{ route('castle.kirasozlesme.download', ['file' => $ks->id]) }}">Dosyayı İndir</a>
             </td>
           </tr>
         @endforeach
         </tbody>
       </table>
       <div class="d-flex justify-content-center">
-        {!! $yonetimKuruluEvraklari->links() !!}
+        {!! $kiraSozlesme->links() !!}
       </div>
     </div>
   </div>

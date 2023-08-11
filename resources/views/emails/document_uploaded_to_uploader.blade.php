@@ -1,9 +1,7 @@
 @component('mail::message')
   # Evrağınız Yüklendi
 
-  Merhaba {{ $user_name }},
-
-  {{ $document_name }} belgeniz başarıyla yüklendi ve onay bekliyor.
+  {{ $emailData['document_name'] }} adlı belgeniz başarıyla yüklendi ve incelemeye alındı.
 
   Teşekkürler,<br>
   {{ config('app.name') }}

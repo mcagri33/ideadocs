@@ -2,38 +2,42 @@
 
 namespace App\Services;
 
-use App\Mail\DocumentApproved;
-use App\Mail\DocumentRejected;
+namespace App\Services;
+
+use App\Mail\DocumentUploadedToUploader;
+use App\Mail\DocumentUploadedToAdmins;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class EmailService
 {
-  public function sendDocumentUploadedEmail($userName, $documentName)
+  public function sendDocumentUploadedEmailToUploader($uploader, $documentName)
   {
     $emailData = [
-      'user_name' => $userName,
+      'uploader' => $uploader,
       'document_name' => $documentName,
+      'subject' => 'Evrakınız Yüklendi',
+
     ];
 
-    Mail::to('your-email@example.com')->send(new DocumentUploaded($emailData));
+    Mail::to($uploader->email)->send(new DocumentUploadedToUploader($emailData));
   }
 
-  public function sendDocumentApprovedEmail($userName, $documentName)
+  public function sendDocumentUploadedEmailToAdmins($uploader, $documentName)
   {
     $emailData = [
-      'user_name' => $userName,
+      'uploader' => $uploader,
       'document_name' => $documentName,
+      'subject' => 'Yeni Evrak Yüklendi',
     ];
 
-    Mail::to('your-email@example.com')->send(new DocumentApproved($emailData));
-  }
+    $admins = User::whereHas('roles', function ($query) {
+      $query->where('name', 'Admin');
+    })->get();
 
-  public function sendDocumentRejectedEmail($userName, $documentName)
-  {
-    $emailData = [
-      'user_name' => $userName,
-      'document_name' => $documentName,
-    ];
-
-    Mail::to('your-email@example.com')->send(new DocumentRejected($emailData));
+    foreach ($admins as $admin) {
+      Mail::to($admin->email)->send(new DocumentUploadedToAdmins($emailData));
+    }
   }
 }
+

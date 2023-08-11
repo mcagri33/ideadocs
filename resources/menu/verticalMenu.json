@@ -7,37 +7,37 @@
       "slug": "yonetim-kurulu-imzaları"
     },
     {
-      "url": "/panel",
+      "url": "/panel/tumyilmuavin",
       "name": "2022 Tüm Yıl Muavinleri",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "tum-yil-muavinleri"
     },
     {
-      "url": "/panel",
+      "url": "/panel/alinanverilencekler",
       "name": "Alınan / Verilen Çekler Listesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "alinan-verilen-cekler"
     },
     {
-      "url": "/panel",
+      "url": "/panel/alinanverilenteminatmektuplarilistesi",
       "name": "Alınan / Verilen Teminat Mektupları Listesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "alinan-verilen-teminat"
     },
     {
-      "url": "/panel",
+      "url": "/panel/aktifleruzerindekisigorta",
       "name": "Aktifler Üzerindeki Sigorta Teminat Tutarları",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "aktif-uzerindeki-sigorta-teminat"
     },
     {
-      "url": "/panel",
+      "url": "/panel/kirasozlesme",
       "name": "Kira Sözleşmeleri",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "kira-sozlesmeleri"
     },
     {
-      "url": "/panel",
+      "url": "/panel/kasasayimtutanagi",
       "name": "Kasa Sayım Tutanağı",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "kasa-sayim-tutanagi"
