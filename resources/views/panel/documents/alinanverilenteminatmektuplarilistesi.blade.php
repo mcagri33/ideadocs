@@ -27,7 +27,7 @@
         @yield('title')
       </h5>
       <div class="card-body">
-        <form action="{{route('castle.alinanverilenteminatmektuplarilistesi.store')}}" enctype="multipart/form-data" method="post">
+        <form id="uploadForm"  action="{{route('castle.alinanverilenteminatmektuplarilistesi.store')}}" enctype="multipart/form-data" method="post">
           @csrf
           <div class="fallback">
             <input name="file" type="file" />
@@ -106,6 +106,9 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <script>
     document.getElementById('uploadForm').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -122,13 +125,27 @@
         }
       }).then(response => {
         progressDiv.style.display = 'none';
-        alert('Dosya başarıyla yüklendi.');
+
+        // Use SweetAlert for success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Başarılı!',
+          text: 'Dosya başarıyla yüklendi.',
+        }).then(() => {
+          // Redirect to the index page after SweetAlert confirmation
+          window.location.href = "{{ route('castle.alinanverilenteminatmektuplarilistesi.index') }}";
+        });
       }).catch(error => {
         progressDiv.style.display = 'none';
-        alert('Dosya yüklenirken bir hata oluştu.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Hata!',
+          text: 'Dosya yüklenirken bir hata oluştu.',
+        });
       });
 
       progressDiv.style.display = 'block';
     });
   </script>
+
 @endsection

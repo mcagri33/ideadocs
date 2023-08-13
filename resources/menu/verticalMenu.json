@@ -1,67 +1,67 @@
 {
   "menu": [
     {
-      "url": "/panel/yonetimkuruluimzalari",
+      "url": "/panel/yonetim-kurulu-imzalari",
       "name": "Yönetim Kurulu İmzaları",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "yonetim-kurulu-imzaları"
     },
     {
-      "url": "/panel/tumyilmuavin",
+      "url": "/panel/tum-yil-muavin",
       "name": "2022 Tüm Yıl Muavinleri",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "tum-yil-muavinleri"
     },
     {
-      "url": "/panel/alinanverilencekler",
+      "url": "/panel/alinan-verilen-cekler",
       "name": "Alınan / Verilen Çekler Listesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "alinan-verilen-cekler"
     },
     {
-      "url": "/panel/alinanverilenteminatmektuplarilistesi",
+      "url": "/panel/alinan-verilen-teminat-mektuplari-listesi",
       "name": "Alınan / Verilen Teminat Mektupları Listesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "alinan-verilen-teminat"
     },
     {
-      "url": "/panel/aktifleruzerindekisigorta",
+      "url": "/panel/aktifler-uzerindeki-sigorta",
       "name": "Aktifler Üzerindeki Sigorta Teminat Tutarları",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "aktif-uzerindeki-sigorta-teminat"
     },
     {
-      "url": "/panel/kirasozlesme",
+      "url": "/panel/kira-sozlesme",
       "name": "Kira Sözleşmeleri",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "kira-sozlesmeleri"
     },
     {
-      "url": "/panel/kasasayimtutanagi",
+      "url": "/panel/kasa-sayim-tutanagi",
       "name": "Kasa Sayım Tutanağı",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "kasa-sayim-tutanagi"
     },
     {
-      "url": "/panel",
+      "url": "/panel/banka-mutabakatlari",
       "name": "Banka Mutabakatları",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "banka-mutabakat"
     },
     {
-      "url": "/panel",
+      "url": "/panel/stok-sayim-tutanagi",
       "name": "Stok Sayım Tutanağı",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "stok-sayim-tutanagi"
     },
     {
-      "url": "/panel",
+      "url": "/panel/stok-miktar-dengesi",
       "name": "Stok Miktar Dengesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "stok-miktar-dengesi"
     },
     {
-      "url": "/panel",
+      "url": "/panel/stok-tutar-dengesi",
       "name": "Stok Tutar Dengesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "stok-tutar-dengesi"

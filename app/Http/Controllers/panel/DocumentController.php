@@ -179,7 +179,7 @@ class DocumentController extends Controller
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
-    return view('panel.documents.kirasozlesme', compact('kasaSayimTutanagi'));
+    return view('panel.documents.kasasayimtutanagi', compact('kasaSayimTutanagi'));
   }
 
   public function kasasayimtutanagistore(DocumentStoreRequest $request, EmailService $emailService)
@@ -191,7 +191,7 @@ class DocumentController extends Controller
 
     $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
 
-    return redirect()->route('castle.kirasozlesme.index')
+    return redirect()->route('castle.kasasayimtutanagi.index')
       ->with('success', 'Evrak yüklendi!');
   }
 
@@ -203,7 +203,7 @@ class DocumentController extends Controller
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
-    return view('panel.documents.kirasozlesme', compact('bankaMutabakatlari'));
+    return view('panel.documents.bankamutabakatlari', compact('bankaMutabakatlari'));
   }
 
   public function bankamutabakatlaristore(DocumentStoreRequest $request, EmailService $emailService)
@@ -215,10 +215,81 @@ class DocumentController extends Controller
 
     $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
 
-    return redirect()->route('castle.kirasozlesme.index')
+    return redirect()->route('castle.bankamutabakatlari.index')
       ->with('success', 'Evrak yüklendi!');
   }
 
+  public function stoksayimtutanagi()
+  {
+    $user = Auth::user();
+    $stokSayimTutanagi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Stok Sayim Tutanagi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.stoksayimtutanagi', compact('stokSayimTutanagi'));
+  }
+
+  public function stoksayimtutanagistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Stok Sayim Tutanagi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.stoksayimtutanagi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function stokmiktardengesi()
+  {
+    $user = Auth::user();
+    $stokMiktarDengesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Stok Miktar Dengesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.stokmiktardengesi', compact('stokMiktarDengesi'));
+  }
+
+  public function stokmiktardengesistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Stok Miktar Dengesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.stokmiktardengesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function stoktutardengesi()
+  {
+    $user = Auth::user();
+    $stokTutarDengesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Stok Tutar Dengesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.stoktutardengesi', compact('stokTutarDengesi'));
+  }
+
+  public function stoktutardengesistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Stok Tutar Dengesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.stoktutardengesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
 
   public function download($file)
   {

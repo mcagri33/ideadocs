@@ -52,7 +52,7 @@ Route::group(['prefix' => '/panel/roles','middleware' => ['auth','role:Admin']],
     ->name('castle.role.delete');
 });
 
-Route::group(['prefix' => '/panel/yonetimkuruluimzalari','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/yonetim-kurulu-imzalari','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'yonetimkuruluevraklari'])
     ->name('castle.yonetimkuruluimzalari.index');
   Route::post('/store',[DocumentController::class,'yonetimkuruluevraklaristore'])
@@ -60,7 +60,7 @@ Route::group(['prefix' => '/panel/yonetimkuruluimzalari','middleware' => ['auth'
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.yonetimkuruluimzalari.download');
 });
 
-Route::group(['prefix' => '/panel/tumyilmuavin','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/tum-yil-muavin','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'tumyilmuavin'])
     ->name('castle.tumyilmuavin.index');
   Route::post('/store',[DocumentController::class,'tumyilmuavinstore'])
@@ -68,7 +68,7 @@ Route::group(['prefix' => '/panel/tumyilmuavin','middleware' => ['auth']], funct
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.tumyilmuavin.download');
 });
 
-Route::group(['prefix' => '/panel/alinanverilencekler','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/alinan-verilen-cekler','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'alinanverilencekler'])
     ->name('castle.alinanverilencekler.index');
   Route::post('/store',[DocumentController::class,'alinanverilenceklerstore'])
@@ -76,7 +76,7 @@ Route::group(['prefix' => '/panel/alinanverilencekler','middleware' => ['auth']]
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.alinanverilencekler.download');
 });
 
-Route::group(['prefix' => '/panel/alinanverilenteminatmektuplarilistesi','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/alinan-verilen-teminat-mektuplari-listesi','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'alinanverilenteminatmektuplarilistesi'])
     ->name('castle.alinanverilenteminatmektuplarilistesi.index');
   Route::post('/store',[DocumentController::class,'alinanverilenteminatmektuplarilistesistore'])
@@ -84,7 +84,7 @@ Route::group(['prefix' => '/panel/alinanverilenteminatmektuplarilistesi','middle
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.alinanverilenteminatmektuplarilistesi.download');
 });
 
-Route::group(['prefix' => '/panel/aktifleruzerindekisigorta','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/aktifler-uzerindeki-sigorta','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'aktifleruzerindekisigorta'])
     ->name('castle.aktifleruzerindekisigorta.index');
   Route::post('/store',[DocumentController::class,'aktifleruzerindekisigortastore'])
@@ -92,7 +92,7 @@ Route::group(['prefix' => '/panel/aktifleruzerindekisigorta','middleware' => ['a
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.aktifleruzerindekisigorta.download');
 });
 
-Route::group(['prefix' => '/panel/kirasozlesme','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/kira-sozlesme','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'kirasozlesme'])
     ->name('castle.kirasozlesme.index');
   Route::post('/store',[DocumentController::class,'kirasozlesmestore'])
@@ -100,10 +100,42 @@ Route::group(['prefix' => '/panel/kirasozlesme','middleware' => ['auth']], funct
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.kirasozlesme.download');
 });
 
-Route::group(['prefix' => '/panel/kasasayimtutanagi','middleware' => ['auth']], function () {
+Route::group(['prefix' => '/panel/kasa-sayim-tutanagi','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'kasasayimtutanagi'])
     ->name('castle.kasasayimtutanagi.index');
   Route::post('/store',[DocumentController::class,'kasasayimtutanagistore'])
     ->name('castle.kasasayimtutanagi.store');
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.kasasayimtutanagi.download');
+});
+
+Route::group(['prefix' => '/panel/banka-mutabakatlari','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'bankamutabakatlari'])
+    ->name('castle.bankamutabakatlari.index');
+  Route::post('/store',[DocumentController::class,'bankamutabakatlaristore'])
+    ->name('castle.bankamutabakatlari.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.bankamutabakatlari.download');
+});
+
+Route::group(['prefix' => '/panel/stok-sayim-tutanagi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'stoksayimtutanagi'])
+    ->name('castle.stoksayimtutanagi.index');
+  Route::post('/store',[DocumentController::class,'stoksayimtutanagistore'])
+    ->name('castle.stoksayimtutanagi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.stoksayimtutanagi.download');
+});
+
+Route::group(['prefix' => '/panel/stok-miktar-dengesi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'stokmiktardengesi'])
+    ->name('castle.stokmiktardengesi.index');
+  Route::post('/store',[DocumentController::class,'stokmiktardengesistore'])
+    ->name('castle.stokmiktardengesi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.stokmiktardengesi.download');
+});
+
+Route::group(['prefix' => '/panel/stok-tutar-dengesi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'stoktutardengesi'])
+    ->name('castle.stoktutardengesi.index');
+  Route::post('/store',[DocumentController::class,'stoktutardengesistore'])
+    ->name('castle.stoktutardengesi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.stoktutardengesi.download');
 });
