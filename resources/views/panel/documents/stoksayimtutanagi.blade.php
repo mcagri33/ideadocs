@@ -23,7 +23,7 @@
           <div class="mb-3 row">
             <label for="html5-name-input" class="col-md-2 col-form-label">Dosya Adı</label>
             <div class="col-md-10">
-              <input type="text" class="form-control"  name="document_name" value="{{old('document_name')}}" placeholder="Dosyanızı Adlandırın" />
+              <input type="text" class="form-control"  name="document_name" value="{{old('document_name')}}" placeholder="Dosyanızı Adlandırın" required/>
               @error("name")
               <span class="text-danger">{{$message}}</span>
               @enderror

@@ -188,3 +188,11 @@ Route::group(['prefix' => '/panel/personel-listesi','middleware' => ['auth']], f
     ->name('castle.personellistesi.store');
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.personellistesi.download');
 });
+
+Route::group(['prefix' => '/panel/interaktif-alinan-arac-listesi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'interaktiftenalinanaraclistesi'])
+    ->name('castle.interaktiftenalinanaraclistesi.index');
+  Route::post('/store',[DocumentController::class,'interaktiftenalinanaraclistesistore'])
+    ->name('castle.interaktiftenalinanaraclistesi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.interaktiftenalinanaraclistesi.download');
+});

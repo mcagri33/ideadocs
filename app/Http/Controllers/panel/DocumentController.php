@@ -435,6 +435,30 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
+  public function interaktiftenalinanaraclistesi()
+  {
+    $user = Auth::user();
+    $interaktiftenAlinanAracListesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Interaktiften Alinan Arac Listesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.interaktiftenalinanaraclistesi', compact('interaktiftenAlinanAracListesi'));
+  }
+
+  public function interaktiftenalinanaraclistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Interaktiften Alinan Arac Listesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.interaktiftenalinanaraclistesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
   public function download($file)
   {
     $document = Documents::find($file);
