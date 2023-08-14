@@ -52,6 +52,14 @@ Route::group(['prefix' => '/panel/roles','middleware' => ['auth','role:Admin']],
     ->name('castle.role.delete');
 });
 
+Route::group(['prefix' => '/panel/tum-evraklar','middleware' => ['auth','role:Admin']], function () {
+  Route::get('/', [DocumentController::class, 'allDocuments'])
+    ->name('castle.alldocument.index');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.file.download');
+
+});
+
+
 Route::group(['prefix' => '/panel/yonetim-kurulu-imzalari','middleware' => ['auth']], function () {
   Route::get('/', [DocumentController::class, 'yonetimkuruluevraklari'])
     ->name('castle.yonetimkuruluimzalari.index');
@@ -195,4 +203,36 @@ Route::group(['prefix' => '/panel/interaktif-alinan-arac-listesi','middleware' =
   Route::post('/store',[DocumentController::class,'interaktiftenalinanaraclistesistore'])
     ->name('castle.interaktiftenalinanaraclistesi.store');
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.interaktiftenalinanaraclistesi.download');
+});
+
+Route::group(['prefix' => '/panel/doviz-degerleme-tablolari','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'dovizdegerlemetablolari'])
+    ->name('castle.dovizdegerlemetablolari.index');
+  Route::post('/store',[DocumentController::class,'dovizdegerlemetablolaristore'])
+    ->name('castle.dovizdegerlemetablolari.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.dovizdegerlemetablolari.download');
+});
+
+Route::group(['prefix' => '/panel/organizasyon-semasi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'organizasyonsemasi'])
+    ->name('castle.organizasyonsemasi.index');
+  Route::post('/store',[DocumentController::class,'organizasyonsemasistore'])
+    ->name('castle.organizasyonsemasi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.organizasyonsemasi.download');
+});
+
+Route::group(['prefix' => '/panel/cari-yil-guncel-mizani','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'cariyilguncelmizani'])
+    ->name('castle.cariyilguncelmizani.index');
+  Route::post('/store',[DocumentController::class,'cariyilguncelmizanistore'])
+    ->name('castle.cariyilguncelmizani.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.cariyilguncelmizani.download');
+});
+
+Route::group(['prefix' => '/panel/mdv-degerleme-calismalari','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'mdvdegerlemecalismalari'])
+    ->name('castle.mdvdegerlemecalismalari.index');
+  Route::post('/store',[DocumentController::class,'mdvdegerlemecalismalaristore'])
+    ->name('castle.mdvdegerlemecalismalari.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.mdvdegerlemecalismalari.download');
 });

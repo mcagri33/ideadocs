@@ -5,8 +5,8 @@ namespace App\Http\Controllers\panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentStoreRequest;
 use App\Models\Documents;
+use App\Models\User;
 use App\Services\EmailService;
-use Illuminate\Http\Request;
 use App\Services\FileService;
 use Auth;
 use App\Traits\DocumentUploadTrait;
@@ -19,6 +19,14 @@ class DocumentController extends Controller
   public function __construct(EmailService $emailService)
   {
     $this->emailService = $emailService;
+  }
+
+  public function allDocuments()
+  {
+    $usersDocs = User::whereHas('roles', function ($query) {
+      $query->where('name', 'Customer');
+    })->with('documents')->get();
+    return view('panel.documents.tumevrak', compact('usersDocs'));
   }
 
   public function yonetimkuruluevraklari()
@@ -456,6 +464,102 @@ class DocumentController extends Controller
     $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
 
     return redirect()->route('castle.interaktiftenalinanaraclistesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function dovizdegerlemetablolari()
+  {
+    $user = Auth::user();
+    $dovizDegerlemeTablolari = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Doviz Degerleme Tablolari')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.dovizdegerlemetablolari', compact('dovizDegerlemeTablolari'));
+  }
+
+  public function dovizdegerlemetablolaristore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Doviz Degerleme Tablolari';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.dovizdegerlemetablolari.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function organizasyonsemasi()
+  {
+    $user = Auth::user();
+    $organizasyonSemasi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Organizasyon Semasi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.organizasyonsemasi', compact('organizasyonSemasi'));
+  }
+
+  public function organizasyonsemasistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Organizasyon Semasi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.organizasyonsemasi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function cariyilguncelmizani()
+  {
+    $user = Auth::user();
+    $cariYilGuncelMizani = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Cari Yil Guncel Mizani')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.cariyilguncelmizani', compact('cariYilGuncelMizani'));
+  }
+
+  public function cariyilguncelmizanistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Cari Yil Guncel Mizani';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.cariyilguncelmizani.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function mdvdegerlemecalismalari()
+  {
+    $user = Auth::user();
+    $mdvDegerlemeCalismalari = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Mdv Degerleme Calismalari')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.mdvdegerlemecalismalari', compact('mdvDegerlemeCalismalari'));
+  }
+
+  public function mdvdegerlemecalismalaristore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Mdv Degerleme Calismalari';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.mdvdegerlemecalismalari.index')
       ->with('success', 'Evrak yüklendi!');
   }
 

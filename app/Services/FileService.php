@@ -12,7 +12,9 @@ class FileService
   public static function uploadDocument(UploadedFile $file, $documentName, $documentType, $user)
   {
     $userName = Str::slug($user->name);
-    $filePath = $file->store('public/documents/'.$userName);
+    $fileName = $documentName . '_' . now()->format('Y-m-d') . '.' . $file->getClientOriginalExtension();
+    $filePath = $file->storeAs('public/documents/'.$userName, $fileName);
+
     $document = new Documents([
       'user_id' => $user->id,
       'uuid' => Str::uuid(),
@@ -20,10 +22,11 @@ class FileService
       'document_type' => $documentType,
       'path' => $filePath,
     ]);
-    $document->save();
 
+    $document->save();
     return $document;
   }
+
 
   public static function getDocumentFilePath(Documents $document)
   {

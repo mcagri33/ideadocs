@@ -140,11 +140,25 @@
         });
       }).catch(error => {
         progressDiv.style.display = 'none';
-        Swal.fire({
-          icon: 'error',
-          title: 'Hata!',
-          text: 'Dosya yüklenirken bir hata oluştu.',
-        });
+
+        // Check if the error has response data and errors
+        if (error.response && error.response.data && error.response.data.errors) {
+          const firstError = Object.values(error.response.data.errors)[0][0];
+
+          // Use SweetAlert to display the validation error
+          Swal.fire({
+            icon: 'error',
+            title: 'Hata!',
+            text: firstError,
+          });
+        } else {
+          // If no specific error data, show a generic error message
+          Swal.fire({
+            icon: 'error',
+            title: 'Hata!',
+            text: 'Dosya yüklenirken bir hata oluştu.',
+          });
+        }
       });
 
       progressDiv.style.display = 'block';

@@ -2,19 +2,35 @@
 {
   "menu": [
     {
+      "menuHeader": "Genel Ayarlar"
+    },
+    {
+      "url": "/panel/user",
+      "name": "Kullanıcılar",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "user"
+    },
+    {
+      "menuHeader": "Evraklar İşlemleri"
+    },
+    {
+      "url": "/panel/tum-evraklar",
+      "name": "Kullanıcı Evrakları",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "tum-evraklar"
+    },
+
+    {
       "url": "/panel/yonetim-kurulu-imzalari",
       "name": "Yönetim Kurulu İmzaları",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "yonetim-kurulu-imzaları",
-      "permissions": ["yonetim-kurulu-imzaları-list"]
+      "slug": "yonetim-kurulu-imzaları"
     },
     {
       "url": "/panel/tum-yil-muavin",
       "name": "2022 Tüm Yıl Muavinleri",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "tum-yil-muavinleri",
-      "permissions": ["tum-yil-muavinleri-list"]
-
+      "slug": "tum-yil-muavinleri"
     },
     {
       "url": "/panel/alinan-verilen-cekler",
