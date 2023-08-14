@@ -1,3 +1,4 @@
+
 @extends('layouts/layoutMaster')
 
 @section('title', 'Yönetim Kurulu İmzaları')
@@ -17,7 +18,9 @@
 
 
 @section('content')
-  <h4 class="fw-bold py-3 mb-4">
+  @can('yonetim-kurulu-imzaları-list')
+
+    <h4 class="fw-bold py-3 mb-4">
     @yield('title')
   </h4>
 
@@ -147,4 +150,6 @@
       progressDiv.style.display = 'block';
     });
   </script>
+  @endcan
+
 @endsection

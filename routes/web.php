@@ -139,3 +139,52 @@ Route::group(['prefix' => '/panel/stok-tutar-dengesi','middleware' => ['auth']],
     ->name('castle.stoktutardengesi.store');
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.stoktutardengesi.download');
 });
+
+Route::group(['prefix' => '/panel/supheli-alacaklar-icra-evraklari','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'suphelialacaklar'])
+    ->name('castle.suphelialacaklar.index');
+  Route::post('/store',[DocumentController::class,'suphelialacaklarstore'])
+    ->name('castle.suphelialacaklar.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.suphelialacaklar.download');
+});
+
+Route::group(['prefix' => '/panel/taksitli-kredi-listesi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'taksitlikredilistesi'])
+    ->name('castle.taksitlikredilistesi.index');
+  Route::post('/store',[DocumentController::class,'taksitlikredilistesistore'])
+    ->name('castle.taksitlikredilistesi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.taksitlikredilistesi.download');
+});
+
+Route::group(['prefix' => '/panel/satis-fatura-listesi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'satisfaturalarilistesi'])
+    ->name('castle.satisfaturalarilistesi.index');
+  Route::post('/store',[DocumentController::class,'satisfaturalarilistesistore'])
+    ->name('castle.satisfaturalarilistesi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.satisfaturalarilistesi.download');
+});
+
+Route::group(['prefix' => '/panel/satislarin-maliyet-calismasi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'satislarinmaliyetcalismasi'])
+    ->name('castle.satislarinmaliyetcalismasi.index');
+  Route::post('/store',[DocumentController::class,'satislarinmaliyetcalismasistore'])
+    ->name('castle.satislarinmaliyetcalismasi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.satislarinmaliyetcalismasi.download');
+});
+
+
+Route::group(['prefix' => '/panel/amortisman-calismasi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'amortismanlarincalismasi'])
+    ->name('castle.amortismanlarincalismasi.index');
+  Route::post('/store',[DocumentController::class,'amortismanlarincalismasistore'])
+    ->name('castle.amortismanlarincalismasi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.amortismanlarincalismasi.download');
+});
+
+Route::group(['prefix' => '/panel/personel-listesi','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'personellistesi'])
+    ->name('castle.personellistesi.index');
+  Route::post('/store',[DocumentController::class,'personellistesistore'])
+    ->name('castle.personellistesi.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.personellistesi.download');
+});

@@ -14,7 +14,7 @@
         Kullanıcı Ekle
       </a>
     </div>
-    <form action="{{ route('castle.user.search') }}" method="GET" class="d-flex">
+    <form action="#" method="GET" class="d-flex">
       @csrf
       <div class="input-group">
         <input type="text" name="q" class="form-control" placeholder="Arama yap...">

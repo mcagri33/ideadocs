@@ -291,6 +291,150 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
+  public function suphelialacaklar()
+  {
+    $user = Auth::user();
+    $supheliAlacaklar = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Supheli Alacaklar İcra Evraklari')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.suphelialacaklar', compact('supheliAlacaklar'));
+  }
+
+  public function suphelialacaklarstore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Supheli Alacaklar İcra Evraklari';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.suphelialacaklar.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function taksitlikredilistesi()
+  {
+    $user = Auth::user();
+    $taksitliKrediListesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Taksitli Kredi Listesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.taksitlikredilistesi', compact('taksitliKrediListesi'));
+  }
+
+  public function taksitlikredilistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Taksitli Kredi Listesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.taksitlikredilistesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function satisfaturalarilistesi()
+  {
+    $user = Auth::user();
+    $satisFaturaListesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Satis Fatura Listesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.satisfaturalarilistesi', compact('satisFaturaListesi'));
+  }
+
+  public function satisfaturalarilistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Satis Fatura Listesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.satisfaturalarilistesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function satislarinmaliyetcalismasi()
+  {
+    $user = Auth::user();
+    $satislarinMaliyetCalismasi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Satislarin Maliyet Calismasi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.satislarinmaliyetcalismasi', compact('satislarinMaliyetCalismasi'));
+  }
+
+  public function satislarinmaliyetcalismasistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Satislarin Maliyet Calismasi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.satislarinmaliyetcalismasi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function amortismanlarincalismasi()
+  {
+    $user = Auth::user();
+    $amortismanCalismasi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Amortisman Calismasi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.amortismanlarincalismasi', compact('amortismanCalismasi'));
+  }
+
+  public function amortismanlarincalismasistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Amortisman Calismasi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.amortismanlarincalismasi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function personellistesi()
+  {
+    $user = Auth::user();
+    $personelListesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Personel Listesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.personellistesi', compact('personelListesi'));
+  }
+
+  public function personellistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Personel Listesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.personellistesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
   public function download($file)
   {
     $document = Documents::find($file);
