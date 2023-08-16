@@ -11,6 +11,12 @@
       "slug": "user"
     },
     {
+      "url": "/panel/roles",
+      "name": "Roller",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "roles"
+    },
+    {
       "menuHeader": "Evraklar İşlemleri"
     },
     {

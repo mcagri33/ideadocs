@@ -4,6 +4,7 @@
 
 
 @section('content')
+  @can('doviz-degerleme-tablolari')
   <h4 class="fw-bold py-3 mb-4">
     @yield('title')
   </h4>
@@ -149,5 +150,5 @@
     });
   </script>
 
-
+  @endcan
 @endsection

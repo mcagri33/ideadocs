@@ -18,7 +18,7 @@
 
 
 @section('content')
-  @can('yonetim-kurulu-imzaları-list')
+  @can('yonetim-kurulu-imzaları')
 
     <h4 class="fw-bold py-3 mb-4">
     @yield('title')

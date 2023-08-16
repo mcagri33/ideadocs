@@ -4,6 +4,7 @@
 
 
 @section('content')
+  @can('banka-mutabakat')
   <h4 class="fw-bold py-3 mb-4">
     @yield('title')
   </h4>
@@ -148,6 +149,6 @@
       progressDiv.style.display = 'block';
     });
   </script>
-
+  @endcan
 
 @endsection

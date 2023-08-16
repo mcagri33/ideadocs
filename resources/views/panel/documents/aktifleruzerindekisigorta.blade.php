@@ -17,10 +17,11 @@
 
 
 @section('content')
-  <h4 class="fw-bold py-3 mb-4">
+  @can('aktif-uzerindeki-sigorta-teminat')
+
+    <h4 class="fw-bold py-3 mb-4">
     @yield('title')
   </h4>
-
   <div class="col-12">
     <div class="card mb-4">
       <h5 class="card-header">
@@ -161,4 +162,5 @@
       progressDiv.style.display = 'block';
     });
   </script>
+  @endcan
 @endsection
