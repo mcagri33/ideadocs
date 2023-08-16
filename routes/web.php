@@ -55,6 +55,10 @@ Route::group(['prefix' => '/panel/roles','middleware' => ['auth','role:Admin']],
 Route::group(['prefix' => '/panel/tum-evraklar','middleware' => ['auth','role:Admin']], function () {
   Route::get('/', [DocumentController::class, 'allDocuments'])
     ->name('castle.alldocument.index');
+  Route::get('/{userUuid}', [DocumentController::class, 'getUserDetails'])
+    ->name('castle.user.evrak');
+  Route::patch('/update-document-status/{document}', [DocumentController::class, 'updateStatus'])->name('update.document.status');
+
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.file.download');
 
 });

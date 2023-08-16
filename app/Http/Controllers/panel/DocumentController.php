@@ -29,6 +29,25 @@ class DocumentController extends Controller
     return view('panel.documents.tumevrak', compact('usersDocs'));
   }
 
+  public function getUserDetails($userUuid)
+  {
+    $users = User::where('uuid',$userUuid)->paginate(10);
+    //dd($users);
+    return view('panel.documents.evrak-show',compact('users'));
+  }
+
+  public function updateStatus(DocumentStoreRequest $request, Documents $document)
+  {
+    try {
+      $newStatus = $request->input('status');
+      $document->update(['status' => $newStatus]);
+      return response()->json(['message' => 'Evrak durumu güncellendi']);
+    } catch (\Exception $e) {
+      return response()->json(['message' => 'Evrak durumu güncellenirken hata oluştu.'], 500);
+    }
+  }
+
+
   public function yonetimkuruluevraklari()
   {
     $user = Auth::user();
