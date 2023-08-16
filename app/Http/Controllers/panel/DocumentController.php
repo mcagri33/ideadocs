@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\panel;
 
+use App\Events\DocumentStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentStoreRequest;
 use App\Models\Documents;
@@ -10,11 +11,12 @@ use App\Services\EmailService;
 use App\Services\FileService;
 use Auth;
 use App\Traits\DocumentUploadTrait;
+use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
-  protected $emailService;
   use DocumentUploadTrait;
+  protected $emailService;
 
   public function __construct(EmailService $emailService)
   {
@@ -36,11 +38,14 @@ class DocumentController extends Controller
     return view('panel.documents.evrak-show',compact('users'));
   }
 
-  public function updateStatus(DocumentStoreRequest $request, Documents $document)
+  public function updateStatus(Request $request, Documents $document)
   {
     try {
       $newStatus = $request->input('status');
       $document->update(['status' => $newStatus]);
+
+      //$this->emailService->sendDocumentUploadedEmailToStatus($document->user, $document->document_name);
+
       return response()->json(['message' => 'Evrak durumu güncellendi']);
     } catch (\Exception $e) {
       return response()->json(['message' => 'Evrak durumu güncellenirken hata oluştu.'], 500);

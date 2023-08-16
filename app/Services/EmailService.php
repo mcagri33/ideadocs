@@ -6,6 +6,8 @@ namespace App\Services;
 
 use App\Mail\DocumentUploadedToUploader;
 use App\Mail\DocumentUploadedToAdmins;
+use App\Mail\DocumentUploadedToStatus;
+
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 
@@ -21,6 +23,17 @@ class EmailService
     ];
 
     Mail::to($uploader->email)->send(new DocumentUploadedToUploader($emailData));
+  }
+
+  public function sendDocumentUploadedEmailToStatus($uploader, $documentName)
+  {
+    $emailData = [
+      'uploader' => $uploader,
+      'document_name' => $documentName,
+      'subject' => 'Evrak Durumu',
+    ];
+
+    Mail::to($uploader->email)->send(new DocumentUploadedToStatus($emailData));
   }
 
   public function sendDocumentUploadedEmailToAdmins($uploader, $documentName)
