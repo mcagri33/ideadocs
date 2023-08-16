@@ -39,7 +39,7 @@
                 <td>{{ $document->created_at }}</td>
                 <td>
                   <div class="dropdown">
-                    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="statusDropdown{{ $document->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-sm dropdown-toggle @if ($document->status === 0) btn-danger @elseif ($document->status === 1) btn-success @elseif ($document->status === 2) btn-warning @endif" type="button" id="statusDropdown{{ $document->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       @if ($document->status === 2)
                         Onay Bekliyor
                       @elseif ($document->status === 1)
