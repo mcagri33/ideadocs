@@ -19,14 +19,20 @@ class DocumentUploadedToStatus extends Mailable
 
   public function build()
   {
-    return $this->markdown('emails.document_status_updated')
-      ->subject('Evrak Durumu Güncellendi')
-      ->with([
-        'user' => $this->emailData['user'],
-        'document' => $this->emailData['document'],
-        'status_text' => $this->getStatusText($this->emailData['status']),
-      ]);
+    try {
+      return $this->markdown('emails.document_status_updated')
+        ->subject('Evrak Durumu Güncellendi')
+        ->with([
+          'user' => $this->emailData['user'],
+          'document' => $this->emailData['document_name'],
+          'status_text' => $this->getStatusText($this->emailData['status']),
+        ]);
+    } catch (\Exception $e) {
+      \Illuminate\Support\Facades\Log::error('E-posta gönderimi sırasında hata oluştu: ' . $e->getMessage());
+    }
   }
+
+
 
   protected function getStatusText($status)
   {

@@ -44,7 +44,7 @@ class DocumentController extends Controller
       $newStatus = $request->input('status');
       $document->update(['status' => $newStatus]);
 
-      //$this->emailService->sendDocumentUploadedEmailToStatus($document->user, $document->document_name);
+     // event(new DocumentStatusUpdated($document, $document->user, $newStatus));
 
       return response()->json(['message' => 'Evrak durumu güncellendi']);
     } catch (\Exception $e) {
@@ -52,8 +52,7 @@ class DocumentController extends Controller
     }
   }
 
-
-  public function yonetimkuruluevraklari()
+  public function yonetimKuruluEvraklari()
   {
     $user = Auth::user();
     $yonetimKuruluEvraklari = Documents::where('user_id', $user->id)
@@ -64,7 +63,7 @@ class DocumentController extends Controller
     return view('panel.documents.yonetimkurulu', compact('yonetimKuruluEvraklari'));
   }
 
-  public function yonetimkuruluevraklaristore(DocumentStoreRequest $request, EmailService $emailService)
+  public function yonetimKuruluEvraklariStore(DocumentStoreRequest $request, EmailService $emailService)
   {
 
     $user = Auth::user();
@@ -79,7 +78,7 @@ class DocumentController extends Controller
   }
 
 
-  public function tumyilmuavin()
+  public function tumYilMuavin()
   {
     $user = Auth::user();
     $tumYilMuavin = Documents::where('user_id', $user->id)
@@ -90,7 +89,7 @@ class DocumentController extends Controller
     return view('panel.documents.tumyilmuavin', compact('tumYilMuavin'));
   }
 
-  public function tumyilmuavinstore(DocumentStoreRequest $request, EmailService $emailService)
+  public function tumYilmuavinStore(DocumentStoreRequest $request, EmailService $emailService)
   {
 
     $user = Auth::user();
@@ -104,7 +103,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function alinanverilencekler()
+  public function alinanVerilenCekler()
   {
     $user = Auth::user();
     $alinanverilencekler = Documents::where('user_id', $user->id)
@@ -115,7 +114,7 @@ class DocumentController extends Controller
     return view('panel.documents.alinanverilencekler', compact('alinanverilencekler'));
   }
 
-  public function alinanverilenceklerstore(DocumentStoreRequest $request, EmailService $emailService)
+  public function alinanVerilenCeklerStore(DocumentStoreRequest $request, EmailService $emailService)
   {
 
     $user = Auth::user();
@@ -129,7 +128,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function alinanverilenteminatmektuplarilistesi()
+  public function alinanVerilenTeminatMektuplariListesi()
   {
     $user = Auth::user();
     $alinanVerilenTeminatMektuplariListesi = Documents::where('user_id', $user->id)
@@ -140,7 +139,7 @@ class DocumentController extends Controller
     return view('panel.documents.alinanverilenteminatmektuplarilistesi', compact('alinanVerilenTeminatMektuplariListesi'));
   }
 
-  public function alinanverilenteminatmektuplarilistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function alinanVerilenTeminatMektuplariListesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
 
     $user = Auth::user();
@@ -154,7 +153,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function aktifleruzerindekisigorta()
+  public function aktiflerUzerindekiSigorta()
   {
     $user = Auth::user();
     $aktifleruzerindekisigorta = Documents::where('user_id', $user->id)
@@ -165,7 +164,7 @@ class DocumentController extends Controller
     return view('panel.documents.aktifleruzerindekisigorta', compact('aktifleruzerindekisigorta'));
   }
 
-  public function aktifleruzerindekisigortastore(DocumentStoreRequest $request, EmailService $emailService)
+  public function aktiflerUzerindekiSigortaStore(DocumentStoreRequest $request, EmailService $emailService)
   {
 
     $user = Auth::user();
@@ -179,7 +178,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function kirasozlesme()
+  public function kiraSozlesme()
   {
     $user = Auth::user();
     $kiraSozlesme = Documents::where('user_id', $user->id)
@@ -190,7 +189,7 @@ class DocumentController extends Controller
     return view('panel.documents.kirasozlesme', compact('kiraSozlesme'));
   }
 
-  public function kirasozlesmestore(DocumentStoreRequest $request, EmailService $emailService)
+  public function kiraSozlesmeStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -203,7 +202,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function kasasayimtutanagi()
+  public function kasaSayimTutanagi()
   {
     $user = Auth::user();
     $kasaSayimTutanagi = Documents::where('user_id', $user->id)
@@ -214,7 +213,7 @@ class DocumentController extends Controller
     return view('panel.documents.kasasayimtutanagi', compact('kasaSayimTutanagi'));
   }
 
-  public function kasasayimtutanagistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function kasaSayimTutanagiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -227,7 +226,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function bankamutabakatlari()
+  public function bankaMutabakatlari()
   {
     $user = Auth::user();
     $bankaMutabakatlari = Documents::where('user_id', $user->id)
@@ -238,7 +237,7 @@ class DocumentController extends Controller
     return view('panel.documents.bankamutabakatlari', compact('bankaMutabakatlari'));
   }
 
-  public function bankamutabakatlaristore(DocumentStoreRequest $request, EmailService $emailService)
+  public function bankaMutabakatlariStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -251,7 +250,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function stoksayimtutanagi()
+  public function stokSayimTutanagi()
   {
     $user = Auth::user();
     $stokSayimTutanagi = Documents::where('user_id', $user->id)
@@ -262,7 +261,7 @@ class DocumentController extends Controller
     return view('panel.documents.stoksayimtutanagi', compact('stokSayimTutanagi'));
   }
 
-  public function stoksayimtutanagistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function stokSayimTutanagiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -275,7 +274,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function stokmiktardengesi()
+  public function stokMiktarDengesi()
   {
     $user = Auth::user();
     $stokMiktarDengesi = Documents::where('user_id', $user->id)
@@ -286,7 +285,7 @@ class DocumentController extends Controller
     return view('panel.documents.stokmiktardengesi', compact('stokMiktarDengesi'));
   }
 
-  public function stokmiktardengesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function stokMiktarDengesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -299,7 +298,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function stoktutardengesi()
+  public function stokTutarDengesi()
   {
     $user = Auth::user();
     $stokTutarDengesi = Documents::where('user_id', $user->id)
@@ -310,7 +309,7 @@ class DocumentController extends Controller
     return view('panel.documents.stoktutardengesi', compact('stokTutarDengesi'));
   }
 
-  public function stoktutardengesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function stokTutarDengesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -323,7 +322,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function suphelialacaklar()
+  public function supheliAlacaklar()
   {
     $user = Auth::user();
     $supheliAlacaklar = Documents::where('user_id', $user->id)
@@ -334,7 +333,7 @@ class DocumentController extends Controller
     return view('panel.documents.suphelialacaklar', compact('supheliAlacaklar'));
   }
 
-  public function suphelialacaklarstore(DocumentStoreRequest $request, EmailService $emailService)
+  public function supheliAlacaklarStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -347,7 +346,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function taksitlikredilistesi()
+  public function taksitliKrediListesi()
   {
     $user = Auth::user();
     $taksitliKrediListesi = Documents::where('user_id', $user->id)
@@ -358,7 +357,7 @@ class DocumentController extends Controller
     return view('panel.documents.taksitlikredilistesi', compact('taksitliKrediListesi'));
   }
 
-  public function taksitlikredilistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function taksitliKrediListesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -371,7 +370,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function satisfaturalarilistesi()
+  public function satisFaturalariListesi()
   {
     $user = Auth::user();
     $satisFaturaListesi = Documents::where('user_id', $user->id)
@@ -382,7 +381,7 @@ class DocumentController extends Controller
     return view('panel.documents.satisfaturalarilistesi', compact('satisFaturaListesi'));
   }
 
-  public function satisfaturalarilistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function satisFaturalariListesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -395,7 +394,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function satislarinmaliyetcalismasi()
+  public function satislarinMaliyetCalismasi()
   {
     $user = Auth::user();
     $satislarinMaliyetCalismasi = Documents::where('user_id', $user->id)
@@ -406,7 +405,7 @@ class DocumentController extends Controller
     return view('panel.documents.satislarinmaliyetcalismasi', compact('satislarinMaliyetCalismasi'));
   }
 
-  public function satislarinmaliyetcalismasistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function satislarinMaliyetCalismasiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -419,7 +418,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function amortismanlarincalismasi()
+  public function amortismanlarinCalismasi()
   {
     $user = Auth::user();
     $amortismanCalismasi = Documents::where('user_id', $user->id)
@@ -430,7 +429,7 @@ class DocumentController extends Controller
     return view('panel.documents.amortismanlarincalismasi', compact('amortismanCalismasi'));
   }
 
-  public function amortismanlarincalismasistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function amortismanlarinCalismasiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -443,7 +442,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function personellistesi()
+  public function personelListesi()
   {
     $user = Auth::user();
     $personelListesi = Documents::where('user_id', $user->id)
@@ -454,7 +453,7 @@ class DocumentController extends Controller
     return view('panel.documents.personellistesi', compact('personelListesi'));
   }
 
-  public function personellistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function personelListesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -467,7 +466,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function interaktiftenalinanaraclistesi()
+  public function interaktiftenAlinanAracListesi()
   {
     $user = Auth::user();
     $interaktiftenAlinanAracListesi = Documents::where('user_id', $user->id)
@@ -478,7 +477,7 @@ class DocumentController extends Controller
     return view('panel.documents.interaktiftenalinanaraclistesi', compact('interaktiftenAlinanAracListesi'));
   }
 
-  public function interaktiftenalinanaraclistesistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function interaktiftenAlinanAracListesiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -491,7 +490,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function dovizdegerlemetablolari()
+  public function dovizDegerlemeTablolari()
   {
     $user = Auth::user();
     $dovizDegerlemeTablolari = Documents::where('user_id', $user->id)
@@ -502,7 +501,7 @@ class DocumentController extends Controller
     return view('panel.documents.dovizdegerlemetablolari', compact('dovizDegerlemeTablolari'));
   }
 
-  public function dovizdegerlemetablolaristore(DocumentStoreRequest $request, EmailService $emailService)
+  public function dovizDegerlemeTablolariStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -515,7 +514,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function organizasyonsemasi()
+  public function organizasyonSemasi()
   {
     $user = Auth::user();
     $organizasyonSemasi = Documents::where('user_id', $user->id)
@@ -526,7 +525,7 @@ class DocumentController extends Controller
     return view('panel.documents.organizasyonsemasi', compact('organizasyonSemasi'));
   }
 
-  public function organizasyonsemasistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function organizasyonSemasiStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -539,7 +538,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function cariyilguncelmizani()
+  public function cariYilGuncelMizani()
   {
     $user = Auth::user();
     $cariYilGuncelMizani = Documents::where('user_id', $user->id)
@@ -550,7 +549,7 @@ class DocumentController extends Controller
     return view('panel.documents.cariyilguncelmizani', compact('cariYilGuncelMizani'));
   }
 
-  public function cariyilguncelmizanistore(DocumentStoreRequest $request, EmailService $emailService)
+  public function cariYilGuncelMizaniStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');
@@ -563,7 +562,7 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
-  public function mdvdegerlemecalismalari()
+  public function mdvDegerlemeCalismalari()
   {
     $user = Auth::user();
     $mdvDegerlemeCalismalari = Documents::where('user_id', $user->id)
@@ -574,7 +573,7 @@ class DocumentController extends Controller
     return view('panel.documents.mdvdegerlemecalismalari', compact('mdvDegerlemeCalismalari'));
   }
 
-  public function mdvdegerlemecalismalaristore(DocumentStoreRequest $request, EmailService $emailService)
+  public function mdvDegerlemeCalismalariStore(DocumentStoreRequest $request, EmailService $emailService)
   {
     $user = Auth::user();
     $documentName = $request->input('document_name');

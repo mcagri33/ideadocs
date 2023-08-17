@@ -25,16 +25,18 @@ class EmailService
     Mail::to($uploader->email)->send(new DocumentUploadedToUploader($emailData));
   }
 
-  public function sendDocumentUploadedEmailToStatus($uploader, $documentName)
+  public function sendDocumentUploadedEmailToStatus($userName, $documentName, $newStatus)
   {
     $emailData = [
-      'uploader' => $uploader,
+      'user' => $userName,
       'document_name' => $documentName,
+      'status' => $newStatus,
       'subject' => 'Evrak Durumu',
     ];
 
-    Mail::to($uploader->email)->send(new DocumentUploadedToStatus($emailData));
+    Mail::to($userName->email)->send(new DocumentUploadedToStatus($emailData));
   }
+
 
   public function sendDocumentUploadedEmailToAdmins($uploader, $documentName)
   {
