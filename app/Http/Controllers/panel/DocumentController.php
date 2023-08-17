@@ -44,7 +44,7 @@ class DocumentController extends Controller
       $newStatus = $request->input('status');
       $document->update(['status' => $newStatus]);
 
-     // event(new DocumentStatusUpdated($document, $document->user, $newStatus));
+     //TODO:: event(new DocumentStatusUpdated($document, $document->user, $newStatus));
 
       return response()->json(['message' => 'Evrak durumu güncellendi']);
     } catch (\Exception $e) {
