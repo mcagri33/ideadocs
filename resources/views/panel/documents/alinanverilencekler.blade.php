@@ -2,20 +2,6 @@
 
 @section('title', 'Alınan Verilen Çekler')
 
-
-@section('vendor-style')
-  <link rel="stylesheet" href="{{asset('assets/vendor/libs/dropzone/dropzone.css')}}" />
-@endsection
-
-@section('vendor-script')
-  <script src="{{asset('assets/vendor/libs/dropzone/dropzone.js')}}"></script>
-@endsection
-
-@section('page-script')
-  <script src="{{asset('assets/js/forms-file-upload.js')}}"></script>
-@endsection
-
-
 @section('content')
   @can('alinan-verilen-cekler')
 

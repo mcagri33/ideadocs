@@ -43,9 +43,7 @@ class DocumentController extends Controller
     try {
       $newStatus = $request->input('status');
       $document->update(['status' => $newStatus]);
-
-     //TODO:: event(new DocumentStatusUpdated($document, $document->user, $newStatus));
-
+      //TODO:: event(new DocumentStatusUpdated($document, $document->user, $newStatus));
       return response()->json(['message' => 'Evrak durumu güncellendi']);
     } catch (\Exception $e) {
       return response()->json(['message' => 'Evrak durumu güncellenirken hata oluştu.'], 500);
@@ -78,7 +76,7 @@ class DocumentController extends Controller
   }
 
 
-  public function tumYilMuavin()
+  /*public function tumYilMuavin()
   {
     $user = Auth::user();
     $tumYilMuavin = Documents::where('user_id', $user->id)
@@ -101,7 +99,7 @@ class DocumentController extends Controller
 
     return redirect()->route('castle.tumyilmuavin.index')
       ->with('success', 'Evrak yüklendi!');
-  }
+  }*/
 
   public function alinanVerilenCekler()
   {
@@ -583,6 +581,79 @@ class DocumentController extends Controller
     $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
 
     return redirect()->route('castle.mdvdegerlemecalismalari.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function mizanKurumlarVergisiBeyanamesi()
+  {
+    $user = Auth::user();
+    $mizanKurumlarVergisiBeyanamesi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Mizan ve Kurumlar Vergisi Beyanamesi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.mizankurumlarvergisibeyanamesi', compact('mizanKurumlarVergisiBeyanamesi'));
+  }
+
+  public function mizanKurumlarVergisiBeyanamesiStore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Mizan ve Kurumlar Vergisi Beyanamesi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.mizankurumlarvergisibeyanamesi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function tapuTakyidatYazisi()
+  {
+    $user = Auth::user();
+    $tapuTakyidatYazisi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Tapu Takyidat Yazisi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.taputakyidatyazisi', compact('tapuTakyidatYazisi'));
+  }
+
+
+  public function tapuTakyidatYazisiStore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Tapu Takyidat Yazisi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.taputakyidatyazisi.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function avukatYazisi()
+  {
+    $user = Auth::user();
+    $avukatYazisi = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Avukat Yazisi')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.avukatyazisi', compact('avukatYazisi'));
+  }
+
+  public function avukatYazisiStore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Avukat Yazisi';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.avukatyazisi.index')
       ->with('success', 'Evrak yüklendi!');
   }
 

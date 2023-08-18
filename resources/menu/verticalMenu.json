@@ -33,11 +33,26 @@
       "slug": "yonetim-kurulu-imzaları"
     },
     {
-      "url": "/panel/tum-yil-muavin",
-      "name": "2022 Tüm Yıl Muavinleri",
+      "url": "/panel/mizan-kurumlar-vergisi-beyaname",
+      "name": "Mizan ve Kurumlar Vergisi Beyanamesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "tum-yil-muavinleri"
+      "slug": "mizan-kurumlar-vergisi-beyaname"
     },
+
+    {
+      "url": "/panel/avukat-yazisi",
+      "name": "Avukat Yazısı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "avukat-yazisi"
+    },
+
+    {
+      "url": "/panel/tapu-takyidat-yazisi",
+      "name": "Tapu Takyidat Yazısı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "tapu-takyidat-yazisi"
+    },
+
     {
       "url": "/panel/alinan-verilen-cekler",
       "name": "Alınan / Verilen Çekler Listesi",
