@@ -657,6 +657,54 @@ class DocumentController extends Controller
       ->with('success', 'Evrak yüklendi!');
   }
 
+  public function vergiDairesiBorcDurumu()
+  {
+    $user = Auth::user();
+    $vergiDairesiBorcDurumu = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Vergi Dairesi Borc Durumu')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.vergidairesiborc', compact('vergiDairesiBorcDurumu'));
+  }
+
+  public function vergiDairesiBorcDurumuStore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Vergi Dairesi Borc Durumu';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.vergidairesiborc.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
+  public function sgkBorcDurumu()
+  {
+    $user = Auth::user();
+    $sgkBorcDurumu = Documents::where('user_id', $user->id)
+      ->where('document_type', 'Sgk Borc Durumu')
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('panel.documents.sgkborcdurumu', compact('sgkBorcDurumu'));
+  }
+
+  public function sgkBorcDurumuStore(DocumentStoreRequest $request, EmailService $emailService)
+  {
+    $user = Auth::user();
+    $documentName = $request->input('document_name');
+    $documentType = 'Sgk Borc Durumu';
+    $file = $request->file('file');
+
+    $this->uploadDocumentAndNotify($file, $documentName, $documentType, $user, $emailService);
+
+    return redirect()->route('castle.sgkborcdurumu.index')
+      ->with('success', 'Evrak yüklendi!');
+  }
+
   public function download($file)
   {
     $document = Documents::find($file);

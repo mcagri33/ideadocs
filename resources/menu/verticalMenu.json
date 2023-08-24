@@ -54,6 +54,20 @@
     },
 
     {
+      "url": "/panel/vergi-dairesi-borc-durumu",
+      "name": "Vergi Dairesi Borç Durumunu Gösteren Yazı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "vergi-dairesi-borc-durumu"
+    },
+
+    {
+      "url": "/panel/sgk-borc-durumu",
+      "name": "Sgk Borç Durumunu Gösteren Yazı",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "sgk-borc-durumu"
+    },
+
+    {
       "url": "/panel/alinan-verilen-cekler",
       "name": "Alınan / Verilen Çekler Listesi",
       "icon": "menu-icon tf-icons ti ti-smart-home",

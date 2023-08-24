@@ -266,3 +266,19 @@ Route::group(['prefix' => '/panel/avukat-yazisi','middleware' => ['auth']], func
     ->name('castle.avukatyazisi.store');
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.avukatyazisi.download');
 });
+
+Route::group(['prefix' => '/panel/vergi-dairesi-borc-durumu','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'vergiDairesiBorcDurumu'])
+    ->name('castle.vergidairesiborc.index');
+  Route::post('/store',[DocumentController::class,'vergiDairesiBorcDurumuStore'])
+    ->name('castle.vergidairesiborc.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.vergidairesiborc.download');
+});
+
+Route::group(['prefix' => '/panel/sgk-borc-durumu','middleware' => ['auth']], function () {
+  Route::get('/', [DocumentController::class, 'sgkBorcDurumu'])
+    ->name('castle.sgkborcdurumu.index');
+  Route::post('/store',[DocumentController::class,'sgkBorcDurumuStore'])
+    ->name('castle.sgkborcdurumu.store');
+  Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.sgkborcdurumu.download');
+});
