@@ -3,7 +3,7 @@
 
   Sayın {{ $user->name }},
 
-  {{ $document->document_name }} adlı evrakınızın durumu güncellendi. Yeni durum: {{ $status_text }}.
+  {{ $document->document_name }} adlı evrakınızın durumu güncellendi. Yeni durum: "{{ $newStatus }}".
 
   Teşekkürler,<br>
   {{ config('app.name') }}

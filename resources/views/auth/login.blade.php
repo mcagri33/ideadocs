@@ -36,8 +36,8 @@ $configData = Helper::appClasses();
           </a>
         </div>
         <!-- /Logo -->
-        <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
-        <p class="mb-4">Please sign-in to your account and start the adventure</p>
+        <h4 class="mb-2"> {{config('variables.templateName')}} Hoşgeldiniz</h4>
+        <p class="mb-4">Giriş Yapmak için bilgilerinizi doldurunuz!</p>
 
         @if (session('status'))
         <div class="alert alert-success mb-1 rounded-0" role="alert">
@@ -60,12 +60,12 @@ $configData = Helper::appClasses();
           </div>
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
-              <label class="form-label" for="login-password">Password</label>
-              @if (Route::has('password.request'))
-              <a href="{{ route('password.request') }}">
-                <small>Forgot Password?</small>
-              </a>
-              @endif
+              <label class="form-label" for="login-password">Şifre</label>
+{{--              @if (Route::has('password.request'))--}}
+{{--              <a href="{{ route('password.request') }}">--}}
+{{--                <small>Forgot Password?</small>--}}
+{{--              </a>--}}
+{{--              @endif--}}
             </div>
             <div class="input-group input-group-merge">
               <input type="password" id="login-password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
@@ -77,27 +77,19 @@ $configData = Helper::appClasses();
               @enderror
             </div>
           </div>
-          <div class="mb-3">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }}>
-              <label class="form-check-label" for="remember-me">
-                Remember Me
-              </label>
-            </div>
-          </div>
-          <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+          <button class="btn btn-primary d-grid w-100" type="submit">Giriş Yap</button>
         </form>
 
-        <p class="text-center">
+        {{--<p class="text-center">
           <span>New on our platform?</span>
           @if (Route::has('register'))
           <a href="{{ route('register') }}">
             <span>Create an account</span>
           </a>
           @endif
-        </p>
+        </p>--}}
 
-        <div class="divider my-4">
+   {{--     <div class="divider my-4">
           <div class="divider-text">or</div>
         </div>
 
@@ -113,7 +105,7 @@ $configData = Helper::appClasses();
           <a href="javascript:;" class="btn btn-icon btn-label-twitter">
             <i class="tf-icons fa-brands fa-twitter fs-5"></i>
           </a>
-        </div>
+        </div>--}}
       </div>
     </div>
     <!-- /Login -->

@@ -4,12 +4,13 @@ namespace App\Events;
 
 use App\Models\Documents;
 use App\Models\User;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 class DocumentStatusUpdated
 {
-  use Dispatchable, SerializesModels;
+  use Dispatchable, InteractsWithSockets, SerializesModels;
 
   public $document;
   public $user;
@@ -22,3 +23,4 @@ class DocumentStatusUpdated
     $this->newStatus = $newStatus;
   }
 }
+

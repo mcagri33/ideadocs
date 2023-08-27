@@ -2,9 +2,6 @@
 {
   "menu": [
     {
-      "menuHeader": "Genel Ayarlar"
-    },
-    {
       "url": "/panel/user",
       "name": "Kullanıcılar",
       "icon": "menu-icon tf-icons ti ti-user",

@@ -11,6 +11,7 @@
   <script src="{{ asset('assets/js/config.js') }}"></script>
 
 @if ($configData['hasCustomizer'])
+{{--
   <script>
     window.templateCustomizer = new TemplateCustomizer({
       cssPath: '',
@@ -38,4 +39,5 @@
       'controls': <?php echo json_encode($configData['customizerControls']); ?>,
     });
   </script>
+--}}
 @endif

@@ -107,4 +107,9 @@ class AuthController extends Controller
   {
     return view('content.pages.pages-home');
   }
+
+  public function site()
+  {
+    return view('site');
+  }
 }

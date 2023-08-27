@@ -17,6 +17,11 @@ use App\Http\Controllers\panel\DocumentController;
 */
 
 // Main Page Route
+Route::group(['prefix' => '/'], function () {
+  Route::get('/', [AuthController::class, 'site'])
+    ->name('site.index');
+});
+
 Route::group(['prefix' => '/panel', 'middleware' => ['auth']], function () {
   Route::get('/', [AuthController::class, 'castle'])
     ->name('castle.panel.index');

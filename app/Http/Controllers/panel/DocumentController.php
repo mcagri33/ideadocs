@@ -12,6 +12,7 @@ use App\Services\FileService;
 use Auth;
 use App\Traits\DocumentUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DocumentController extends Controller
 {
@@ -43,7 +44,10 @@ class DocumentController extends Controller
     try {
       $newStatus = $request->input('status');
       $document->update(['status' => $newStatus]);
-      //TODO:: event(new DocumentStatusUpdated($document, $document->user, $newStatus));
+      Log::info('Document status updated event is about to be fired.');
+
+      event(new DocumentStatusUpdated($document, $document->user, $newStatus));
+
       return response()->json(['message' => 'Evrak durumu güncellendi']);
     } catch (\Exception $e) {
       return response()->json(['message' => 'Evrak durumu güncellenirken hata oluştu.'], 500);

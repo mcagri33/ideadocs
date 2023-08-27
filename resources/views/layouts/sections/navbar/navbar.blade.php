@@ -15,7 +15,7 @@ $navbarDetached = ($navbarDetached ?? '');
       <!--  Brand demo (display only for navbar-full and hide on below xl) -->
       @if(isset($navbarFull))
       <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
-        <a href="{{url('/')}}" class="app-brand-link gap-2">
+        <a href="{{url('/panel')}}" class="app-brand-link gap-2">
           <span class="app-brand-logo demo">
             @include('_partials.macros',["height"=>20])
           </span>
@@ -69,7 +69,7 @@ $navbarDetached = ($navbarDetached ?? '');
                         John Doe
                         @endif
                       </span>
-                      <small class="text-muted">Admin</small>
+                      <small class="text-muted">{{ Auth::user()->roles->first()->name }}</small>
                     </div>
                   </div>
                 </a>
@@ -80,7 +80,7 @@ $navbarDetached = ($navbarDetached ?? '');
               <li>
                 <a class="dropdown-item" href="{{ Route::has('profile.show') ? route('profile.show') : 'javascript:void(0);' }}">
                   <i class="ti ti-user-check me-2 ti-sm"></i>
-                  <span class="align-middle">My Profile</span>
+                  <span class="align-middle">Profilim</span>
                 </a>
               </li>
               @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -91,15 +91,6 @@ $navbarDetached = ($navbarDetached ?? '');
                 </a>
               </li>
               @endif
-              <li>
-                <a class="dropdown-item" href="javascript:void(0);">
-                  <span class="d-flex align-items-center align-middle">
-                    <i class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"></i>
-                    <span class="flex-grow-1 align-middle">Billing</span>
-                    <span class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20">2</span>
-                  </span>
-                </a>
-              </li>
               @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
               <li>
                 <div class="dropdown-divider"></div>
@@ -148,7 +139,7 @@ $navbarDetached = ($navbarDetached ?? '');
               <li>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class='ti ti-logout me-2'></i>
-                  <span class="align-middle">Logout</span>
+                  <span class="align-middle">Çıkış Yap</span>
                 </a>
               </li>
               <form method="POST" id="logout-form" action="{{ route('logout') }}">
