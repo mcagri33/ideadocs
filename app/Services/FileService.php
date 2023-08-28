@@ -12,8 +12,9 @@ class FileService
   public static function uploadDocument(UploadedFile $file, $documentName, $documentType, $user)
   {
     $userName = Str::slug($user->name);
+    $companyName = Str::slug($user->company);
     $fileName = $documentName . '_' . now()->format('Y-m-d') . '.' . $file->getClientOriginalExtension();
-    $filePath = $file->storeAs('public/documents/'.$userName, $fileName);
+    $filePath = $file->storeAs('public/documents/'.$userName-$companyName, $fileName);
 
     $document = new Documents([
       'user_id' => $user->id,

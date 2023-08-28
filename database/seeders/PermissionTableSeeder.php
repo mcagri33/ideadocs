@@ -40,7 +40,12 @@ class PermissionTableSeeder extends Seeder
       'doviz-degerleme-tablolari',
       'organizasyon-semasi',
       'cari-yil-guncel-mizani',
-      'mdv-degerleme-calismalari'
+      'mdv-degerleme-calismalari',
+      'avukat-yazisi',
+      'tapu-takyidat-yazisi',
+      'mizan-kurumlar-vergisi-beyaname',
+      'vergi-dairesi-borc-durumu',
+      'sgk-borc-durumu',
     ];
 
     foreach ($permissions as $permission) {

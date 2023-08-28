@@ -18,7 +18,6 @@ class RolesAndPermissionsSeeder extends Seeder
        Role::create(['name' => 'Admin']);
        Role::create(['name' => 'Customer']);
 
-      // İzinlerin tanımlanması
       /*$uploadEvrakPermission = Permission::create(['name' => 'evrak_yükleme']);
       $viewAllEvrakPermission = Permission::create(['name' => 'tüm_evrakları_görüntüleme']);
 
