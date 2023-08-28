@@ -23,6 +23,7 @@ class DocumentStatusUpdated extends Mailable
   public function build()
   {
     return $this->markdown('emails.document-status-updated')
-    ->with(['user' => $this->document->user, 'newStatus' => $this->newStatus]);
+    ->with(['user' => $this->document->user, 'newStatus' => $this->newStatus])
+      ->subject('Evrak Durumu Güncellendi');;
   }
 }
