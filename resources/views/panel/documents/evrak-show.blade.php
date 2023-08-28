@@ -16,6 +16,17 @@
 
     <div class="card">
       <div class="table-responsive text-nowrap">
+        <div class="d-flex justify-content-end mb-3">
+          <!-- Durum Filtresi -->
+          <label for="statusFilter">Durum Filtresi:</label>
+          <select id="statusFilter">
+            <option value="">Tümü</option>
+            <option value="2">Onay Bekliyor</option>
+            <option value="1">Onaylandı</option>
+            <option value="0">Reddedildi</option>
+          </select>
+          <button id="filterButton" class="ml-2">Filtrele</button>
+        </div>
         <table class="table">
           <thead>
           <tr>
@@ -27,6 +38,7 @@
             <th>İndir</th>
           </tr>
           </thead>
+
           <tbody class="table-border-bottom-0">
           <?php $count = 1; ?>
           @foreach ($users as $user)
@@ -83,6 +95,15 @@
           }
         });
       }
+    </script>
+    <script>
+      document.getElementById('filterButton').addEventListener('click', function () {
+        const selectedStatus = document.getElementById('statusFilter').value;
+
+        window.location.href = "{{ route('castle.user.evrak', ['userUuid' => $users->first()->uuid]) }}" + "?status=" + selectedStatus;
+      });
+
+      // ... Diğer script kodları ...
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

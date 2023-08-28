@@ -14,7 +14,7 @@
       <div class="card mb-4">
         <h5 class="card-header"> @yield('title')</h5>
         <div class="card-body">
-          <form action="{{route('castle.user.store',$user->uuid)}}" method="post">
+          <form action="{{route('castle.user.update',$user->uuid)}}" method="post">
             @csrf
             <div class="mb-3 row">
               <label for="html5-email-input" class="col-md-2 col-form-label">Email</label>

@@ -34,8 +34,13 @@ class DocumentController extends Controller
 
   public function getUserDetails($userUuid)
   {
-    $users = User::where('uuid',$userUuid)->paginate(10);
-    //dd($users);
+    $users = User::with(['documents' => function ($query) {
+      $status = request()->input('status');
+      if ($status !== null) {
+        $query->where('status', $status);
+      }
+    }])->where('uuid', $userUuid)->paginate(10);    //dd($users);
+
     return view('panel.documents.evrak-show',compact('users'));
   }
 

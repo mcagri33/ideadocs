@@ -64,8 +64,8 @@ Route::group(['prefix' => '/panel/tum-evraklar','middleware' => ['auth','role:Ad
     ->name('castle.user.evrak');
   Route::post('/update-document-status/{document}', [DocumentController::class, 'updateStatus'])->name('update.document.status');
   Route::post('/add-document-note/', [DocumentController::class, 'addDocumentNote'])->name('add.document.note');
-
   Route::get('/{file}/download', [DocumentController::class, 'download'])->name('castle.file.download');
+
 });
 
 

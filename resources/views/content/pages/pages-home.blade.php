@@ -4,7 +4,7 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Home')
+@section('title', 'Anasayfa')
 
 @section('content')
 

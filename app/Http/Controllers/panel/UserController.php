@@ -49,7 +49,7 @@ class UserController extends Controller
     $user->assignRole($request->role);
 
     return redirect()->route('castle.user.index')
-      ->with('success','User created successfully');
+      ->with('success','Kullanıcı Başarıyla Oluşturuldu!');
   }
 
   public function edit($uuid)
@@ -71,32 +71,28 @@ class UserController extends Controller
     $this->validate($request, [
       'name' => 'required',
       'email' => 'required|email|unique:users,email,'.$user->id,
-      'password' => 'nullable|min:6',
       'company' => 'required',
-      'phone' => 'required',
       'status' => 'required|in:1,0',
-      'role' => 'required|array', // Validation for roles as an array
     ]);
 
     $user->name = $request->name;
-    $user->company = $request->company; // Fixed typo here, change $request->name to $request->company
+    $user->company = $request->company;
     $user->phone = $request->phone;
     $user->email = $request->email;
     $user->status = $request->status;
-    $user->update(); // Use save() instead of update() to save the changes
+    $user->update();
 
-    // Update the user's roles using syncRoles method
-    $user->syncRoles($request->roles); // Use $request->roles to update roles
+    $user->syncRoles($request->role);
 
     return redirect()->route('castle.user.index')
-      ->with('success', 'User updated successfully');
+      ->with('success', 'Kullanıcı Başarıyla Güncellendi');
   }
 
   public function destroy($id)
   {
     User::find($id)->delete();
     return redirect()->route('castle.users.index')
-      ->with('success','User deleted successfully');
+      ->with('success','Kullanıcı Başarıyla Silindi!');
   }
 
   public function search(Request $request)
